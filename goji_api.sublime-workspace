@@ -1,0 +1,280 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"go_",
+				"go_install"
+			],
+			[
+				"go",
+				"go_lang_version"
+			],
+			[
+				"line",
+				"lineinfile"
+			],
+			[
+				"change",
+				"change_sudoes_2"
+			],
+			[
+				"update",
+				"update_cache"
+			],
+			[
+				"u",
+				"uncompTasks"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"Task",
+				"TasksView"
+			],
+			[
+				"Tasks",
+				"TasksView"
+			],
+			[
+				"to",
+				"toJSON"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "package main\n\nimport (\n	\"fmt\"\n	\"./routes\"\n\n	\"github.com/zenazn/goji\"\n)\n\ntype User struct {\n	Id   int64\n	Name string\n}\n\nfunc hello(c web.C, w http.ResponseWriter, r *http.Request) {\n	u := User{\n		Id: 1,\n		Name: c.URLParams[\"name\"],\n	}\n\n	j, _:=json.Marshal(u)\n	fmt.Fprintf(w, string(j))\n}\n\nfunc Route(m *web.Mux) {\n	m.Get(\"/hello/:name\",hello)\n}\n\nfunc main() {\n	//Add routes\n	routes.Include()\n\n	goji.Serve()\n}",
+			"file": "server.go",
+			"file_size": 478,
+			"file_write_time": 130876591231757096,
+			"settings":
+			{
+				"buffer_size": 407,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "package routes\n\nimport (\n	\"../controllers\"\n	\"github.com/zenazn/goji\"\n	\"github.com/zenazn/goji/web\"\n)\n\nfunc Include() {\n	\n}",
+			"file": "routes/routes.go",
+			"file_size": 0,
+			"file_write_time": 130876912534298708,
+			"settings":
+			{
+				"buffer_size": 122,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/mmkk/.aws/credentials",
+		"/C/Users/mmkk/AppData/Roaming/Sublime Text 2/Packages/GoSublime/CHANGELOG.md",
+		"/C/Users/mmkk/AppData/Roaming/Sublime Text 2/Packages/GoSublime/USAGE.md",
+		"/C/Users/mmkk/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/mmkk/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/G/vf_API_Server/vf_API_Server/public_html/nodejs_app/routes/users.js",
+		"/G/vf_API_Server/vf_API_Server/public_html/nodejs_app/source/coffeescript/sample.coffee",
+		"/G/backbone_test/source/package.json"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "server.go",
+					"settings":
+					{
+						"buffer_size": 407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								390,
+								390
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "routes/routes.go",
+					"settings":
+					{
+						"buffer_size": 122,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								120,
+								120
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.483338659645,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GoSublime-output":
+	{
+		"height": 142.0
+	},
+	"output.MarGo-output":
+	{
+		"height": 50.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 191.0,
+	"status_bar_visible": true
+}
