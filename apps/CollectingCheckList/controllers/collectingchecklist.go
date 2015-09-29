@@ -17,6 +17,11 @@ type Hello struct {
 	id string
 }
 
+type Staff struct {
+	Id int64
+	Name string
+}
+
 type Config struct {
 	Db RdsMysqlConfig `json:"rds_mysql"`
 }
@@ -28,7 +33,7 @@ type RdsMysqlConfig struct {
 }
 
 func CCLHome(w http.ResponseWriter,req *http.Request) {
-	//fmt.Fprintf(w,"CCLHome")
+	fmt.Fprintf(w,"CCLHome")
 	w.Header().Set("Content-Type","application/json")
 
 	hello := Hello{
@@ -66,13 +71,19 @@ func GetStaff(w http.ResponseWriter,req *http.Request) {
 	}
 	defer rows.Close()
 
+	staff := []Staff{}
+
 	for rows.Next() {
-		var id int
+		var id int64
 		var name string
 		if err := rows.Scan(&id, &name); err != nil {
 			log.Fatal("show scant staff_record error:",err)
 		}
-		fmt.Println(id,name)
+		stf := Staff{Id:id,Name:name}
+		staff = append(staff,stf)
 	}
+
+	encoder := json.NewEncoder(w)
+	encoder.Encode(staff)
 
 }
