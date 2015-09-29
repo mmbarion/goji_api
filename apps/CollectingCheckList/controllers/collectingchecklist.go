@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"encoding/json"
+	"io/ioutil"
+	"path/filepath"
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/k0kubun/pp"
@@ -13,6 +15,16 @@ import (
 type Hello struct {
 	Message string
 	id string
+}
+
+type Config struct {
+	Db RdsMysqlConfig `json:"rds_mysql"`
+}
+
+type RdsMysqlConfig struct {
+	User string `json:"user"`
+	Pass string `json:"pass"`
+	Url  string `json:"url"`
 }
 
 func CCLHome(w http.ResponseWriter,req *http.Request) {
@@ -33,7 +45,16 @@ func AddCheckList(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetStaff(w http.ResponseWriter,req *http.Request) {
-	db,err := sql.Open("mysql","mushroom_db_user:mmn39504@tcp(mushroominstance.cxneilncg8ry.ap-northeast-1.rds.amazonaws.com:3306)/mushroom_db")
+	absPath, _ := filepath.Abs("./apps/config.json")
+	file,err := ioutil.ReadFile(absPath)
+	if err != nil {
+		panic(err)
+	}
+
+	var config Config
+	json.Unmarshal(file, &config)
+
+	db,err := sql.Open("mysql",config.Db.User+":"+config.Db.Pass+"@tcp("+config.Db.Url+")/mushroom_db")
 	if err != nil {
 		log.Fatal("db connection error:",err)
 	}
